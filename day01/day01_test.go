@@ -64,3 +64,31 @@ func TestScanAndReturn(t *testing.T) {
 		t.Errorf("want %v but got %v", want, got)
 	}
 }
+
+func TestGetResult(t *testing.T) {
+	got := GetResult("testValuesWords")
+	want := 281
+	if got != want {
+		t.Errorf("want %d but got %d", want, got)
+	}
+}
+
+func TestReplaceWrittenNumbers(t *testing.T) {
+	t.Run("text numbers are replaced correctly", func(t *testing.T) {
+		got := ReplaceWrittenNumbers("abcone2threexyz")
+		want := "abc123xyz"
+
+		if got != want {
+			t.Errorf("got %q but want %q", got, want)
+		}
+	})
+
+	t.Run("text numbers are replaced correctly - string without numbers", func(t *testing.T) {
+		got := ReplaceWrittenNumbers("abc2texyz")
+		want := "abc2texyz"
+
+		if got != want {
+			t.Errorf("got %q but want %q", got, want)
+		}
+	})
+}
