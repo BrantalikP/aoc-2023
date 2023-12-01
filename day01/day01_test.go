@@ -76,7 +76,7 @@ func TestGetResult(t *testing.T) {
 func TestReplaceWrittenNumbers(t *testing.T) {
 	t.Run("text numbers are replaced correctly", func(t *testing.T) {
 		got := ReplaceWrittenNumbers("abcone2threexyz")
-		want := "abc123xyz"
+		want := "abco1e2t3exyz"
 
 		if got != want {
 			t.Errorf("got %q but want %q", got, want)

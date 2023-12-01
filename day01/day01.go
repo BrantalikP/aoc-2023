@@ -10,7 +10,9 @@ import (
 
 func GetCalibrationValue(input string) int {
 	var sum []string
-	parsedInput := ReplaceWrittenNumbers(input)
+	// LOL ^2
+	replaced := ReplaceWrittenNumbers(input)
+	parsedInput := ReplaceWrittenNumbers(replaced)
 	for _, char := range parsedInput {
 		if char > 48 && char < 58 {
 
@@ -69,28 +71,29 @@ func ScanAndReturn(filepath string) []string {
 	return lines
 }
 
+// LOL
 func ReplaceWrittenNumbers(line string) string {
 	replacer := strings.NewReplacer(
 		"one",
-		"1",
+		"o1e",
 		"two",
-		"2",
+		"t2o",
 		"three",
-		"3",
+		"t3e",
 		"four",
-		"4",
+		"f4r",
 		"five",
-		"5",
+		"f5e",
 		"six",
-		"6",
+		"s6x",
 		"seven",
-		"7",
+		"s7n",
 		"eight",
-		"8",
+		"e8t",
 		"nine",
-		"9",
+		"n9e",
 		"zero",
-		"0",
+		"z0o",
 	)
 
 	return replacer.Replace(line)
