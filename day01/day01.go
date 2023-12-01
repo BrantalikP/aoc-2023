@@ -1,6 +1,9 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -45,9 +48,26 @@ func GetSumOfCalibrationValues(input []string) int {
 }
 
 func ScanAndReturn(filepath string) []string {
-	return []string{"", ""}
+	var lines []string
+	readFile, err := os.Open(filepath + ".txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileScanner := bufio.NewScanner(readFile)
+
+	fileScanner.Split(bufio.ScanLines)
+
+	for fileScanner.Scan() {
+		line := fileScanner.Text()
+		lines = append(lines, line)
+	}
+
+	readFile.Close()
+	return lines
 }
 
 func main() {
-	GetCalibrationValue("1abc2")
+	lines := ScanAndReturn("puzzleInput")
+	result := GetSumOfCalibrationValues(lines)
+	fmt.Println(result)
 }
