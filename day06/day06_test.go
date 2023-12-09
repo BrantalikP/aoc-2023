@@ -15,7 +15,7 @@ const (
 )
 
 func TestScanData(t *testing.T) {
-	got, _ := ScanData("test_input")
+	got, _ := ScanData("test_input", 1)
 	want := TestData
 
 	if !reflect.DeepEqual(got, want) {
@@ -40,6 +40,18 @@ func TestRaceData(t *testing.T) {
 			t.Errorf("got %v, want %v", got, want)
 		}
 	})
+}
+
+func TestConcatPart2Data(t *testing.T) {
+	time := []string{"7", "15", "30"}
+	distance := []string{"9", "40", "200"}
+
+	got := ConcatPart2Data(time, distance)
+	want := []Race{{Time: 71530, Distance: 940200}}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v, want %v", got, want)
+	}
 }
 
 func TestSumAndCal(t *testing.T) {
